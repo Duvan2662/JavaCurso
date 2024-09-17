@@ -1,4 +1,4 @@
-package modelos;
+package com.aluracursos.reproductor.modelos;
 
 public class Audio {
     //Propiedades
@@ -31,17 +31,10 @@ public class Audio {
         return totalReproducciones;
     }
 
-    public void setTotalReproducciones(int totalReproducciones) {
-        this.totalReproducciones = totalReproducciones;
-    }
-
     public int getMeGusta() {
         return meGusta;
     }
 
-    public void setMeGusta(int meGusta) {
-        this.meGusta = meGusta;
-    }
 
     public int getClasificacion() {
         return clasificacion;
@@ -51,13 +44,13 @@ public class Audio {
         this.clasificacion = clasificacion;
     }
 
+
     public void meGusta(){
-
-
+        this.meGusta++;
     }
 
     public void reproducir(){
-
+        this.totalReproducciones ++;
     }
 
 }
