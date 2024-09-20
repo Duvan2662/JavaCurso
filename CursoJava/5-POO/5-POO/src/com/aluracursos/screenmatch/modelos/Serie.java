@@ -8,6 +8,14 @@ public class Serie extends Titulo {
 
     private int minutosPorEpisodio;
 
+    public Serie(String nombre, int fechaDeLamzamiento) {
+        super(nombre, fechaDeLamzamiento);
+    }
+
+    @Override
+    public String toString() {
+        return "Serie: "+this.getNombre() + " ("+ this.getFechaDeLamzamiento()+ ")";
+    }
 
     @Override //Sobre escritura de metodos esta sobreEscribiendo el metodo getDuracionEnMinutos de la clase padre Titulo
     public int getDuracionEnMinutos() {

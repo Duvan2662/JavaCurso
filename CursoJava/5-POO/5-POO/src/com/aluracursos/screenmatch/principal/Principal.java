@@ -1,15 +1,17 @@
+package com.aluracursos.screenmatch.principal;
+
 import com.aluracursos.screenmatch.calculos.CalculadoraDeTiempo;
 import com.aluracursos.screenmatch.calculos.FiltroRecomendacion;
 import com.aluracursos.screenmatch.modelos.Episodios;
 import com.aluracursos.screenmatch.modelos.Pelicula;
 import com.aluracursos.screenmatch.modelos.Serie;
 
+import java.util.ArrayList;
+
 public class Principal {
     public static void main(String[] args) {
 
-        Pelicula miPelicula = new Pelicula();
-        miPelicula.setNombre("Encanto");
-        miPelicula.setFechaDeLamzamiento(2021);
+        Pelicula miPelicula = new Pelicula("Encanto",2021);
         miPelicula.setDuracionEnMinutos(120);
         miPelicula.setIncluidosEnElPlan(true);
         miPelicula.muestraFiichaTecnica();
@@ -18,18 +20,14 @@ public class Principal {
         System.out.println("Total de las  evaluaciones de la pelicula: " + miPelicula.getCantidadEvaluaciones());
         System.out.println("Media de las evaluaciones  de la pelicula: " + miPelicula.calcularMedia());
 
-        Pelicula miPelicula2 = new Pelicula();
-        miPelicula2.setNombre("Matrix");
-        miPelicula2.setFechaDeLamzamiento(2020);
+        Pelicula miPelicula2 = new Pelicula("Matrix",2020);
         miPelicula2.setDuracionEnMinutos(150);
         miPelicula2.setIncluidosEnElPlan(false);
         miPelicula2.evalua(9.8);
         miPelicula2.evalua(5);
 
 
-        Serie miSerie = new Serie();
-        miSerie.setNombre("La casa del dragon");
-        miSerie.setFechaDeLamzamiento(2022);
+        Serie miSerie = new Serie("La casa del dragon",2022);
         miSerie.setTemporada(1);
         miSerie.setEpisodiosPorTemporada(10);
         miSerie.setMinutosPorEpisodio(50);
@@ -53,6 +51,23 @@ public class Principal {
         episodios.setSerie(miSerie);
         episodios.setTotalVisualizaciones(50);
         filtroRecomendacion.filtro(episodios);
+
+
+        var miPelicula3 = new Pelicula("El señor de los anillos",180);
+        miPelicula3.setFechaDeLamzamiento(2001);
+
+
+        ArrayList<Pelicula> listaDePeliculas =new ArrayList<>();
+
+        listaDePeliculas.add(miPelicula);
+        listaDePeliculas.add(miPelicula2);
+        listaDePeliculas.add(miPelicula3);
+
+        System.out.println("Tamaño de la lista de peliculas: "+ listaDePeliculas.size());
+        System.out.println("La primera pelicula es: "+ listaDePeliculas.get(0).getNombre());
+        System.out.println(listaDePeliculas);
+        System.out.println("toString de la pelicula: " + listaDePeliculas.get(0).toString());
+
 
 
 
