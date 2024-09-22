@@ -1,5 +1,7 @@
 package com.aluracursos.screenmatch.modelos;
 
+import com.aluracursos.screenmatch.execpciones.ErrorEnconversion;
+
 public class Titulo implements  Comparable<Titulo> {
     private String nombre;
 
@@ -17,6 +19,16 @@ public class Titulo implements  Comparable<Titulo> {
     public Titulo(String nombre, int fechaDeLamzamiento) {
         this.nombre = nombre;
         this.fechaDeLamzamiento = fechaDeLamzamiento;
+    }
+
+
+    public Titulo(TituloOmdb miMovieOfServices) {
+        this.nombre = miMovieOfServices.title();
+        this.fechaDeLamzamiento = Integer.parseInt(miMovieOfServices.year());
+        if (miMovieOfServices.runtime().contains("N/A")){
+            throw new ErrorEnconversion("No pude convertir la duracion por que contiene un N/A");
+        }
+        this.duracionEnMinutos = Integer.parseInt(miMovieOfServices.runtime().substring(0,1).replace("",""));
     }
 
     public void setNombre(String nombre) {
@@ -62,12 +74,12 @@ public class Titulo implements  Comparable<Titulo> {
         }else{
             bolean = "No";
         }
-        System.out.println("""
+        System.out.printf("""
                 El nombre de la pelicula es: %s
                 Su fecha de lanzamiendo fue en: %d
                 Y tiene una duracion de %d minutos.
                 Y %s esta incluida en el plan.
-                """.formatted(this.nombre,this.fechaDeLamzamiento,getDuracionEnMinutos(),bolean));
+                %n""", this.nombre,this.fechaDeLamzamiento,getDuracionEnMinutos(),bolean);
     }
 
     public void evalua(double nota) {
@@ -82,5 +94,16 @@ public class Titulo implements  Comparable<Titulo> {
     @Override
     public int compareTo(Titulo otroTitulo) {
         return this.getNombre().compareTo(otroTitulo.getNombre());
+    }
+
+    @Override
+    public String toString() {
+        String mensaje =
+                """
+                Titulo: %s
+                Fecha de lanzamiento: %d
+                Duracion en minutos: %d
+                """.formatted(this.nombre,this.fechaDeLamzamiento,this.duracionEnMinutos);
+        return mensaje;
     }
 }

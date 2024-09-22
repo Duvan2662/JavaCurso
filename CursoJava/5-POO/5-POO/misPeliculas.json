@@ -1,0 +1,18 @@
+[
+  {
+    "Nombre": "Matrix",
+    "FechaDeLamzamiento": 1993,
+    "DuracionEnMinutos": 6,
+    "IncluidosEnElPlan": false,
+    "SumaDeLasEvaluaciones": 0.0,
+    "CantidadEvaluaciones": 0
+  },
+  {
+    "Nombre": "Top Gun",
+    "FechaDeLamzamiento": 1986,
+    "DuracionEnMinutos": 1,
+    "IncluidosEnElPlan": false,
+    "SumaDeLasEvaluaciones": 0.0,
+    "CantidadEvaluaciones": 0
+  }
+]
